@@ -3,7 +3,7 @@
 
 void setup() {
   Serial.begin(9600);
-  check_inputs(IC_4000, sizeof(IC_4000));
+  check_inputs(IC_4001);
 }
 
 void loop() {
