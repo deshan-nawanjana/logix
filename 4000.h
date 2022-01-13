@@ -1,5 +1,10 @@
 // 4000 Dual 3-Input NOR + 1 NOT
-char *IC_4000[] = {
+String IC_4000_GATES[] = {
+    "    NAND   NOT  ",
+    "*      NAND     "
+};
+
+String IC_4000[] = {
     "NN IIIO G IO OIII V X",
     "NN 0001 G 01 1000 V X",
     "NN 0010 G 10 0001 V X",
@@ -12,7 +17,12 @@ char *IC_4000[] = {
 };
 
 // 4001 Quad 2-Input NOR
-char *IC_4001[] = {
+String IC_4001_GATES[] = {
+    "     NAND NAND  ",
+    "*  NAND NAND    "
+};
+
+String IC_4001[] = {
     "IIO OII G IIO OII V X",
     "001 100 G 001 100 V X",
     "010 001 G 010 001 V X",
@@ -21,9 +31,14 @@ char *IC_4001[] = {
 };
 
 // 4002 Dual 4-Input NOR
-char *IC_4002[] = {
+String IC_4002_GATES[] = {
+    "       NAND     ",
+    "*      NAND     "
+};
+
+String IC_4002[] = {
     "OIIII N G N IIIIO V X",
-    "10000 N G N 00000 V X",
+    "10000 N G N 00001 V X",
     "00001 N G N 00010 V X",
     "00010 N G N 00100 V X",
     "00011 N G N 00110 V X",

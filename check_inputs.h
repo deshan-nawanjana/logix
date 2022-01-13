@@ -29,7 +29,7 @@ int chk_vol_read(char c, int n) {
     if(c == '1' && digitalRead(_PINS_[n]) == HIGH) {
         Serial.println(" ? : YES");
         return 1;
-    }else if(c == '0' && digitalRead(_PINS_[n]) == LOW) {
+    } else if(c == '0' && digitalRead(_PINS_[n]) == LOW) {
         Serial.println(" ? : YES");
         return 1;
     } else {
@@ -60,7 +60,7 @@ char int_to_char(int k) {
     }
 }
 
-void check_inputs(char **arr) {
+void check_inputs(String *arr) {
 
     Serial.println("==== IC BEG ====");
 
