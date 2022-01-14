@@ -1,5 +1,5 @@
 #include <LiquidCrystal.h>
-LiquidCrystal lcd(42, 44, 46, 48, 50, 52);
+LiquidCrystal lcd(LCD_PIN_0, 44, 46, 48, 50, 52);
 
 void display_lines(String chars) {
     for(int i = 0; i < 16; i++) {
@@ -13,8 +13,24 @@ void display_lines(String chars) {
 }
 
 void display_begin() {
-  lcd.begin(16, 2);
-  display_lines("   ALL IN ONE      IC CHECKER   ");
+    //lcd.createChar(0, smiley);
+
+    lcd.begin(16, 2);
+    display_lines("   ALL IN ONE      IC CHECKER   ");
+
+    //lcd.setCursor(0, 0);
+
+    //lcd.write(byte(0));
+
+
+}
+
+// name   > IC Number
+// status > 1 =  
+void display_state(String name, int status, int ongoing, int total) {
+    if(status == 1) {
+        display_lines("   ALL IN ONE      IC CHECKER   ");
+    }
 }
 
 void display_gates(String *gates, String output) {

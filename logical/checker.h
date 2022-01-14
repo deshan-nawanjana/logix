@@ -60,7 +60,10 @@ char int_to_char(int k) {
     }
 }
 
-void check_inputs(String *arr) {
+String logicalTest(IC ic) {
+
+    String cid = ic.code;
+    String *arr = ic.check;
 
     Serial.println("==== IC BEG ====");
 
@@ -151,4 +154,5 @@ void check_inputs(String *arr) {
     Serial.print("FINAL RESULT = ");
     Serial.println(output);
 
+    return output;
 }

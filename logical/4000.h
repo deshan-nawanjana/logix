@@ -4,7 +4,7 @@ String IC_4000_GATES[] = {
     "*      NAND     "
 };
 
-String IC_4000[] = {
+String IC_4000_CHECK[] = {
     "NN IIIO G IO OIII V X",
     "NN 0001 G 01 1000 V X",
     "NN 0010 G 10 0001 V X",
@@ -22,7 +22,7 @@ String IC_4001_GATES[] = {
     "*  NAND NAND    "
 };
 
-String IC_4001[] = {
+String IC_4001_CHECK[] = {
     "IIO OII G IIO OII V X",
     "001 100 G 001 100 V X",
     "010 001 G 010 001 V X",
@@ -36,7 +36,7 @@ String IC_4002_GATES[] = {
     "*      NAND     "
 };
 
-String IC_4002[] = {
+String IC_4002_CHECK[] = {
     "OIIII N G N IIIIO V X",
     "10000 N G N 00001 V X",
     "00001 N G N 00010 V X",
