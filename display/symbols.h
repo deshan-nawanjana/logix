@@ -89,19 +89,27 @@ byte SYMBOL_DOT[] = {
 };
 
 struct SYMB {
-    char code;
+    int code;
     byte *data;
 };
 
 SYMB SYMBOLS[] = {
-    { 'A', SYMBOL_AND },
-    { 'O', SYMBOL_OR },
-    { 'N', SYMBOL_NOT },
-    { 'X', SYMBOL_XOR },
-
-    { '!', SYMBOL_LINE_NOT },
-    { '3', SYMBOL_LINE_3 },
-    { '4', SYMBOL_LINE_4 },
-
-    { '*', SYMBOL_DOT },
+    { 3, SYMBOL_LINE_3 },
+    { 4, SYMBOL_LINE_4 },
+    { 5, SYMBOL_LINE_NOT },
+    { 6, SYMBOL_AND },
+    { 7, SYMBOL_OR },
+    { 8, SYMBOL_NOT },
+    { 9, SYMBOL_XOR },
+    { 10, SYMBOL_DOT }
 };
+
+int searchSymb(char code) {
+    int n = -1;
+    for(int i = 0; i < SYMBOLS_COUNT; i++) {
+        if(SYMBOLS[i].code == code - 48) {
+            n = i;
+        }
+    }
+    return n;
+}

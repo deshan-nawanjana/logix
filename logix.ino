@@ -1,32 +1,23 @@
-struct IC {
-  String code;
-  String description;
-  String *gates;
-  String *check;
-};
-
 #include "setup.h"
+#include "extern.h"
 
-#include "logical/4000.h"
-#include "logical/4000_list.h"
-#include "logical/7400.h"
-#include "logical/7400_list.h"
+#include "database/imports.h"
+
+#include "display/symbols.h"
+#include "display/modules.h"
+#include "display/methods.h"
+
 #include "logical/checker.h"
 #include "logical/methods.h"
 
-#include "display/symbols.h"
-#include "display/methods.h"
-#include "display/visuals.h"
+#include "inputs/checker.h"
+#include "inputs/methods.h"
 
 void setup() {
-  Serial.begin(BAUD_RATE);
   displayInit();
-  displayText("   TTL & CMOS   ", "LOGIC ICs TESTER");
-  delay(1000);
-  displayMenu();
+  displayHome();
 }
 
 void loop() {
-  toggleType();
-  delay(500);
+  inputsCheck();
 }

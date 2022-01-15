@@ -1,0 +1,229 @@
+{
+    "series" : {
+        "name" : "TTL",
+        "code" : "7400"
+    },
+    "iclist" : {
+
+        "7400" : {
+            "title" : "Quad 2-Input NAND",
+            "image" : [
+                "     =A!    =A! ",
+                "*  =A!    =A!   "
+            ],
+            "table" : [
+                "IIO IIO G OII OII V X",
+                "001 001 G 100 100 V X",
+                "011 011 G 101 101 V X",
+                "101 101 G 110 110 V X",
+                "110 110 G 011 011 V Z"
+            ]
+        },
+
+        "7402" : {
+            "title" : "Quad 2-Input NOR",
+            "image" : [
+                "     =O!    =O! ",
+                "*  =O!    =O!   "
+            ],
+            "table" : [
+                "OII OII G IIO IIO V X",
+                "100 100 G 001 001 V X",
+                "001 001 G 010 010 V X",
+                "010 010 G 100 100 V X",
+                "011 011 G 110 110 V Z"
+            ]
+        },
+
+        "7408" : {
+            "title" : "Quad 2-Input AND",
+            "image" : [
+                "     =A-    =A- ",
+                "*  =A-    =A-   "
+            ],
+            "table" : [
+                "IIO IIO G OII OII V X",
+                "000 000 G 000 000 V X",
+                "010 010 G 001 001 V X",
+                "100 100 G 010 010 V X",
+                "111 111 G 111 111 V Z"
+            ]
+        },
+
+        "7432" : {
+            "title" : "Quad 2-Input OR",
+            "image" : [
+                "     =O-    =O- ",
+                "*  =O-    =O-   "
+            ],
+            "table" : [
+                "IIO IIO G OII OII V X",
+                "000 000 G 000 000 V X",
+                "011 011 G 101 101 V X",
+                "101 101 G 110 110 V X",
+                "111 111 G 111 111 V Z"
+            ]
+        },
+
+        "7486" : {
+            "title" : "Quad 2-Input XOR",
+            "image" : [
+                "     =X-    =X- ",
+                "*  =X-    =X-   "
+            ],
+            "table" : [
+                "IIO IIO G OII OII V X",
+                "000 000 G 000 000 V X",
+                "011 011 G 101 101 V X",
+                "101 101 G 110 110 V X",
+                "110 110 G 011 011 V Z"
+            ]
+        },
+
+        "747266" : {
+            "title" : "Quad 2-Input XNOR",
+            "image" : [
+                "     =X!    =X! ",
+                "*  =X!    =X!   "
+            ],
+            "table" : [
+                "IIO OII G IIO OII V X",
+                "001 100 G 001 100 V X",
+                "010 001 G 010 001 V X",
+                "100 010 G 100 010 V X",
+                "111 111 G 111 111 V Z"
+            ]
+        },
+
+        "7410" : {
+            "title" : "Triple 3-Input NAND",
+            "image" : [
+                "    3A!     3A! ",
+                "*       3A!     "
+            ],
+            "table" : [
+                "II IIIO G OIII OI V X",
+                "00 0001 G 1000 10 V X",
+                "00 0011 G 1001 11 V X",
+                "01 0101 G 1010 10 V X",
+                "01 0111 G 1011 11 V X",
+                "10 1001 G 1100 10 V X",
+                "10 1011 G 1101 11 V X",
+                "11 1101 G 1110 10 V X",
+                "11 1110 G 0111 01 V Z"
+            ]
+        },
+
+        "7411" : {
+            "title" : "Triple 3-Input AND",
+            "image" : [
+                "    3A-     3A- ",
+                "*       3A-     "
+            ],
+            "table" : [
+                "II IIIO G OIII OI V X",
+                "00 0000 G 0000 00 V X",
+                "00 0010 G 0001 01 V X",
+                "01 0100 G 0010 00 V X",
+                "01 0110 G 0011 01 V X",
+                "10 1000 G 0100 00 V X",
+                "10 1010 G 0101 01 V X",
+                "11 1100 G 0110 00 V X",
+                "11 1111 G 1111 11 V Z"
+            ]
+        },
+
+        "7427" : {
+            "title" : "Triple 3-Input NOR",
+            "image" : [
+                "    3O!     3O! ",
+                "*       3O!     "
+            ],
+            "table" : [
+                "II IIIO G OIII OI V X",
+                "00 0001 G 1000 10 V X",
+                "00 0010 G 0001 01 V X",
+                "01 0100 G 0010 00 V X",
+                "01 0110 G 0011 01 V X",
+                "10 1000 G 0100 00 V X",
+                "10 1010 G 0101 01 V X",
+                "11 1100 G 0110 00 V X",
+                "11 1110 G 0111 01 V Z"
+            ]
+        },
+
+        "744075" : {
+            "title" : "Triple 3-Input OR",
+            "image" : [
+                "       3O-  3O- ",
+                "*       3O-     "
+            ],
+            "table" : [
+                "II IIIO G IO OIII V X",
+                "00 0000 G 00 0000 V X",
+                "00 0011 G 11 1001 V X",
+                "01 0101 G 01 1010 V X",
+                "01 0111 G 11 1011 V X",
+                "10 1001 G 01 1100 V X",
+                "10 1011 G 11 1101 V X",
+                "11 1101 G 01 1110 V X",
+                "11 1111 G 11 1111 V Z"
+            ]
+        },
+
+        "7420" : {
+            "title" : "Dual 4-Input NAND",
+            "image" : [
+                "           4A!  ",
+                "*          4A!  "
+            ],
+            "table" : [
+                "II N IIO G OII N II V X",
+                "00 N 001 G 100 N 00 V X",
+                "00 N 011 G 100 N 01 V X",
+                "00 N 101 G 100 N 10 V X",
+                "00 N 111 G 100 N 11 V X",
+                "01 N 001 G 101 N 00 V X",
+                "01 N 011 G 101 N 01 V X",
+                "01 N 101 G 101 N 10 V X",
+                "01 N 111 G 101 N 11 V X",
+                "10 N 001 G 110 N 00 V X",
+                "10 N 011 G 110 N 01 V X",
+                "10 N 101 G 110 N 10 V X",
+                "10 N 111 G 110 N 11 V X",
+                "11 N 001 G 111 N 00 V X",
+                "11 N 011 G 111 N 01 V X",
+                "11 N 101 G 111 N 10 V X",
+                "11 N 110 G 011 N 11 V Z"
+            ]
+        },
+
+        "7421" : {
+            "title" : "Dual 4-Input AND",
+            "image" : [
+                "           4A-  ",
+                "*          4A-  "
+            ],
+            "table" : [
+                "II N IIO G OII N II V X",
+                "00 N 000 G 000 N 00 V X",
+                "00 N 010 G 000 N 01 V X",
+                "00 N 100 G 000 N 10 V X",
+                "00 N 110 G 000 N 11 V X",
+                "01 N 000 G 001 N 00 V X",
+                "01 N 010 G 001 N 01 V X",
+                "01 N 100 G 001 N 10 V X",
+                "01 N 110 G 001 N 11 V X",
+                "10 N 000 G 010 N 00 V X",
+                "10 N 010 G 010 N 01 V X",
+                "10 N 100 G 010 N 10 V X",
+                "10 N 110 G 010 N 11 V X",
+                "11 N 000 G 011 N 00 V X",
+                "11 N 010 G 011 N 01 V X",
+                "11 N 100 G 011 N 10 V X",
+                "11 N 111 G 111 N 11 V Z"
+            ]
+        }
+        
+    }
+}
