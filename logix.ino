@@ -3,8 +3,8 @@
 
 #include "database/imports.h"
 
-#include "display/symbols.h"
 #include "display/modules.h"
+#include "display/symbols.h"
 #include "display/methods.h"
 
 #include "logical/checker.h"

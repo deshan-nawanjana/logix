@@ -2,10 +2,10 @@
 void displayHome() {
     Serial.println("STATE.HOME_TEXT");
     displayText(
-        "   TTL & CMOS   ",
-        "LOGIC ICs TESTER"
+        " ~!@    LOGIX   ",
+        " #$^  IC TESTER "
     );
-    delay(1000);
+    delay(3000);
     displayMenu();
 }
 

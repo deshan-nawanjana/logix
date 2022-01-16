@@ -27,15 +27,14 @@ void logicalTest() {
             pinMode(IC_PINS[i], OUTPUT);
         }
     }
-    
+
     String out_marks = "AAAAAAAAAA";
     int out_count = 0;
 
     int tot_count = 0;
     // count total rows
     for(int i = 1; ic.table[i] != -1; i++) { tot_count++; }
-    updateRuns("000000000000", 0, tot_count);
-
+    
     // each row loop
     for(int i = 1; ic.table[i] != -1; i++) {
         // reset output count per line
@@ -59,6 +58,16 @@ void logicalTest() {
                 out_count++;
             }
         }
+
+        Serial.print("STATE.SCAN_LINE ");
+        Serial.print(line);
+        Serial.print(" ");
+        Serial.print(out_marks);
+        Serial.print(" ");
+        Serial.print(i);
+        Serial.print("/");
+        Serial.println(tot_count);
+
     }
 
     // check each output marks
@@ -70,6 +79,9 @@ void logicalTest() {
             } else { out_marks[i] = '0'; }
         } else { out_marks[i] = 'Z'; }
     }
+
+    Serial.print("STATE.SCAN_OUTS ");
+    Serial.println(out_marks);
 
     displayOuts(out_marks);
 }

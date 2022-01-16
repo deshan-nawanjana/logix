@@ -14,7 +14,8 @@ bool analogCheck(int n) {
     delay(5);
     int check_3 = analogRead(INPUT_PINS[n]) > 800;
     delay(5);
-    int check_4 = analogRead(INPUT_PINS[n]) > 80;
+    int check_4 = analogRead(INPUT_PINS[n]) > 800;
+
     // ignore press down state
     if(check_1 && check_2 && check_3 && check_4 && INPUT_CMDS[n] == 1) {
         return 0;
@@ -31,11 +32,9 @@ bool analogCheck(int n) {
     }
 }
 
-int run = 0;
-
 void inputsCheck() {
-    if(analogCheck(0) && !run) { nextDB(); }
-    if(analogCheck(2) && !run) { lastIC(); }
-    if(analogCheck(3) && !run) { nextIC(); }
+    if(analogCheck(0)) { nextDB(); }
+    if(analogCheck(2)) { lastIC(); }
+    if(analogCheck(3)) { nextIC(); }
     if(analogCheck(1)) { logicalTest(); }
 }

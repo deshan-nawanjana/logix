@@ -19,11 +19,13 @@ void updateMenu() {
     int n_len = strlen(name);
     int c_len = strlen(code);
 
+    // add ic type to line 1
     int n_idx = n_len == 4 ? 9 : 10;
     for(int i = 0; i < n_len; i++) {
        line_1[i + n_idx] = name[i];
     }
 
+    // add ic code to line 1
     int c_idx = c_len == 4 ? 9 : 8;
     for(int i = 0; i < c_len; i++) {
        line_2[i + c_idx] = code[i];
@@ -33,21 +35,13 @@ void updateMenu() {
 }
 
 void updateRuns(String line, int crr, int tot) {
-
-    Serial.print("STATE.SCAN_LINE ");
-    Serial.print(line);
-    Serial.print(" ");
-    Serial.print(crr);
-    Serial.print("/");
-    Serial.println(tot);
-
     // generate animation wave
     int n = 0;
-    String wave = "> ____________ <";
+    String wave = "  ____________  ";
     for(int i = 0; i < 16; i++) {
         if(wave[i] == '_') {
-            if(line[n] == '1') { wave[i] = ':'; }
-            if(line[n] == '0') { wave[i] = '.'; }
+            if(line[n] == '1') { wave[i] = '='; }
+            if(line[n] == '0') { wave[i] = '_'; }
             n++;
         }
     }
@@ -60,5 +54,5 @@ void updateRuns(String line, int crr, int tot) {
     }
     // display and delay
     displayText(text, wave);
-    delay(200);
+    delay(CHECK_DELAY);
 }

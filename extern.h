@@ -5,6 +5,15 @@ int strlen(String str) {
     return len;
 }
 
+String strcat(String str_1, String str_2) {
+    int len_1 = strlen(str_1);
+    int len_2 = strlen(str_2);
+    char out[len_1 + len_2] = "";
+    for(int i = 0; i < len_1; i++) { out[i] = str_1[i]; }
+    for(int i = 0; i < len_2; i++) { out[i + len_1] = str_2[i]; }
+    return out;
+}
+
 // display modules
 extern void updateMenu();
 extern void updateRuns(String line, int crr, int tot);
