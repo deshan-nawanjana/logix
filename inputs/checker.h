@@ -8,25 +8,20 @@ int INPUT_PINS[4] = {
 
 bool analogCheck(int n) {
     int pin = INPUT_PINS[n];
-    int check_1 = analogRead(INPUT_PINS[n]) > 800;
-    delay(5);
-    int check_2 = analogRead(INPUT_PINS[n]) > 800;
-    delay(5);
-    int check_3 = analogRead(INPUT_PINS[n]) > 800;
-    delay(5);
-    int check_4 = analogRead(INPUT_PINS[n]) > 800;
-
-    // ignore press down state
-    if(check_1 && check_2 && check_3 && check_4 && INPUT_CMDS[n] == 1) {
-        return 0;
+    // four rounds check
+    int chk = 1;
+    for(int i = 0; i < 4; i++) {
+        chk = chk && analogRead(pin) > 800;
+        delay(5);
     }
-    // button down press
-    if(check_1 && check_2 && check_3 && check_4 && INPUT_CMDS[n] == 0) {
+    // ignore press down state
+    if(chk && INPUT_CMDS[n] == 1) { return 0; }
+    if(chk && INPUT_CMDS[n] == 0) {
+        // button down press
         INPUT_CMDS[n] = 1;
         return 1;
-    }
-    // button up reset
-    if(!check_1 || !check_2 || !check_3 || !check_4) {
+    } else {
+        // button up reset
         INPUT_CMDS[n] = 0;
         return 0;
     }
@@ -36,5 +31,5 @@ void inputsCheck() {
     if(analogCheck(0)) { lastIC(); }
     if(analogCheck(1)) { nextIC(); }
     if(analogCheck(2)) { nextDB(); }
-    if(analogCheck(3)) { logicalTest(); }
+    if(analogCheck(3)) { logicalTest(true); }
 }
