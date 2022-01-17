@@ -28,7 +28,7 @@ extern void displayOuts(String marks);
 extern String toLogicRow(int x);
 
 // logical methods
-extern void logicalTest();
+extern void logicalTest(bool fast);
 
 // inputs modules
 extern bool analogCheck(int n);
