@@ -4,6 +4,8 @@ void displayInit() {
     Serial.begin(BAUD_RATE);
     // init display
     display.begin(16, 2);
+    // ic supply pin mode
+    pinMode(IC_PIN_3V, OUTPUT);
 }
 
 // write text on display
@@ -79,29 +81,34 @@ void displayOuts(String marks) {
     image_1[16] = '*';
     image_2[16] = '*';
 
+    displayText(
+        "                ",
+        "                "
+    );
+
     // image blink animation
     int back = 0;
     while(back == 0) {
         displaySymb(image_1);
-        for(int i = 0; i < 400; i += 20) {
+        for(int i = 0; i < 200; i += 20) {
             if(analogCheck(3)) {
                 Serial.println("INPUT.SCAN_ENDS");
-                displayMenu(); back = 1; i = 400; return;
+                displayMenu(); back = 1; i = 200; return;
             }
             if(analogCheck(2)) {
                 Serial.println("INPUT.SCAN_BACK");
-                logicalTest(); back = 1; i = 400; return;
+                logicalTest(true); back = 1; i = 200; return;
             }
         }
         displaySymb(image_2);
         for(int i = 0; i < 200; i += 20) {
-            if(analogCheck(2)) {
+            if(analogCheck(3)) {
                 Serial.println("INPUT.SCAN_ENDS");
                 displayMenu(); back = 1; i = 200; return;
             }
-            if(analogCheck(3)) {
+            if(analogCheck(2)) {
                 Serial.println("INPUT.SCAN_BACK");
-                logicalTest(); back = 1; i = 200; return;
+                logicalTest(true); back = 1; i = 200; return;
             }
         }
     }
