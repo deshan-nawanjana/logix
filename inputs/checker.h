@@ -1,9 +1,9 @@
 int INPUT_CMDS[4] = { 0, 0, 0, 0 };
 int INPUT_PINS[4] = {
-    INPUT_PIN_0,
-    INPUT_PIN_1,
-    INPUT_PIN_2,
-    INPUT_PIN_3
+    INPUT_PIN_TYPE,
+    INPUT_PIN_SCAN,
+    INPUT_PIN_LAST,
+    INPUT_PIN_NEXT
 };
 
 bool analogCheck(int n) {
@@ -33,8 +33,8 @@ bool analogCheck(int n) {
 }
 
 void inputsCheck() {
-    if(analogCheck(0)) { nextDB(); }
-    if(analogCheck(2)) { lastIC(); }
-    if(analogCheck(3)) { nextIC(); }
-    if(analogCheck(1)) { logicalTest(); }
+    if(analogCheck(0)) { lastIC(); }
+    if(analogCheck(1)) { nextIC(); }
+    if(analogCheck(2)) { nextDB(); }
+    if(analogCheck(3)) { logicalTest(); }
 }

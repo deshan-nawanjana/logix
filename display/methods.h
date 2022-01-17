@@ -84,22 +84,22 @@ void displayOuts(String marks) {
     while(back == 0) {
         displaySymb(image_1);
         for(int i = 0; i < 400; i += 20) {
-            if(analogCheck(1)) {
+            if(analogCheck(3)) {
                 Serial.println("INPUT.SCAN_ENDS");
                 displayMenu(); back = 1; i = 400; return;
             }
-            if(analogCheck(0)) {
+            if(analogCheck(2)) {
                 Serial.println("INPUT.SCAN_BACK");
                 logicalTest(); back = 1; i = 400; return;
             }
         }
         displaySymb(image_2);
         for(int i = 0; i < 200; i += 20) {
-            if(analogCheck(1)) {
+            if(analogCheck(2)) {
                 Serial.println("INPUT.SCAN_ENDS");
                 displayMenu(); back = 1; i = 200; return;
             }
-            if(analogCheck(0)) {
+            if(analogCheck(3)) {
                 Serial.println("INPUT.SCAN_BACK");
                 logicalTest(); back = 1; i = 200; return;
             }

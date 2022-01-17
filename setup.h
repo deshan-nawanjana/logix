@@ -2,12 +2,12 @@
 #define BAUD_RATE 9600
 
 // pins for display
-#define LCD_PIN_0 42 // RS
-#define LCD_PIN_1 44 // E
-#define LCD_PIN_2 46 // D4
-#define LCD_PIN_3 48 // D5
-#define LCD_PIN_4 50 // D6
-#define LCD_PIN_5 52 // D7
+#define LCD_PIN_RS 52 // RS
+#define LCD_PIN_E0 50 // E
+#define LCD_PIN_D4 48 // D4
+#define LCD_PIN_D5 46 // D5
+#define LCD_PIN_D6 44 // D6
+#define LCD_PIN_D7 42 // D7
 
 // pins for ic base [ 0 to 6 ]
 #define IC_PIN_01 2
@@ -26,10 +26,10 @@
 #define IC_PIN_13 13
 
 // analog  pins for user input button
-#define INPUT_PIN_0 A3 // toggle ic series / rescan
-#define INPUT_PIN_1 A2 // scan / back
-#define INPUT_PIN_2 A1 // last ic code
-#define INPUT_PIN_3 A0 // next ic code
+#define INPUT_PIN_LAST A0 // last ic code
+#define INPUT_PIN_NEXT A1 // next ic code
+#define INPUT_PIN_TYPE A2 // toggle ic series / rescan
+#define INPUT_PIN_SCAN A3 // scan / back
 
 // delay time for each ic check step
 #define CHECK_DELAY 150

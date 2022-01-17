@@ -1,12 +1,12 @@
 #include <LiquidCrystal.h>
 
 LiquidCrystal display(
-    LCD_PIN_0,
-    LCD_PIN_1,
-    LCD_PIN_2,
-    LCD_PIN_3,
-    LCD_PIN_4,
-    LCD_PIN_5
+    LCD_PIN_RS,
+    LCD_PIN_E0,
+    LCD_PIN_D4,
+    LCD_PIN_D5,
+    LCD_PIN_D6,
+    LCD_PIN_D7
 );
 
 void updateMenu() {
