@@ -9,6 +9,8 @@
 #define LCD_PIN_D6 44 // D6
 #define LCD_PIN_D7 42 // D7
 
+#define IC_PIN_3V 22
+
 // pins for ic base [ 0 to 6 ]
 #define IC_PIN_01 2
 #define IC_PIN_02 3
@@ -26,10 +28,10 @@
 #define IC_PIN_13 13
 
 // analog  pins for user input button
-#define INPUT_PIN_LAST A0 // last ic code
-#define INPUT_PIN_NEXT A1 // next ic code
-#define INPUT_PIN_TYPE A2 // toggle ic series / rescan
-#define INPUT_PIN_SCAN A3 // scan / back
+#define INPUT_PIN_LAST A15 // last ic code
+#define INPUT_PIN_NEXT A14 // next ic code
+#define INPUT_PIN_TYPE A13 // toggle ic series / rescan
+#define INPUT_PIN_SCAN A12 // scan / back
 
 // delay time for each ic check step
 #define CHECK_DELAY 150
