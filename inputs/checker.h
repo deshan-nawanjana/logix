@@ -11,7 +11,7 @@ bool analogCheck(int n) {
     // four rounds check
     int chk = 1;
     for(int i = 0; i < 4; i++) {
-        chk = chk && analogRead(pin) > 800;
+        chk = chk && analogRead(pin) < 400;
         delay(5);
     }
     // ignore press down state
