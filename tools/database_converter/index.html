@@ -33,23 +33,30 @@
 
                 let out = `#define SERIES_${data.series.code}_COUNT ${len}\n\n`
 
+                console.clear();
+
                 // tables
                 Object.keys(obj).forEach(code => {
+                    //console.warn(code)
                     let ic = obj[code]
                     out += `int T_${code}[] = { `
                     // each row
                     obj[code].table.forEach(line => {
                         let str = ``
-                        Array.from(line).forEach(char => {
+                        Array.from(line).forEach((char, i) => {
                             let exc = [' ', 'G', 'V', 'X', 'Z']
                             if(exc.indexOf(char) == -1) {
                                 if(char === '0') { str += '0' }
                                 if(char === '1') { str += '1' }
-                                if(char === 'N') { str += '1' }
+                                if(char === 'N') {
+                                    if(i === 0) { str += '1' }
+                                    if(i !== 0) { str += '0' }
+                                }
                                 if(char === 'I') { str += '1' }
                                 if(char === 'O') { str += '0' }
                             }
                         })
+                        //console.log(str)
                         out += parseInt(str, 2);
                         out += ', '
                     })
@@ -110,12 +117,47 @@
                     out += ` };\n`
                 })
 
+                out += `\n`
+
+                // gates
+                Object.keys(obj).forEach(code => {
+                    console.warn(code)
+                    let ic = obj[code]
+                    out += `int G_${code}[] = { `
+                    // each row
+                    obj[code].gates.reverse().forEach((line, i) => {
+                        console.log(line)
+
+                        let arr = i == 0
+                            ? Array.from(line)
+                            : Array.from(line).reverse()
+
+                        let str = ``
+                        arr.forEach(e => {
+                            console.log(e)
+                            if(e === 'V') { return; }
+                            if(e === 'G') { return; }
+                            if(e === 'N') { str += '1'; return; }
+                            else {
+                                str += (parseInt(e) + 1).toString()
+                            }
+                        })
+
+                        if(i === 0) {
+                            out += str.substr(0, 3) + ', ' + str.substr(3) + ', '
+                        } else {
+                            out += str.substr(0, 3) + ', ' + str.substr(3)
+                        }
+                    })
+                    out += ` };\n`
+                })
+
                 out += `\nIC SERIES_${data.series.code}[] = {\n`
 
                 Object.keys(obj).forEach(code => {
                     let ic = obj[code]
                     out += '\t{'
-                    out += ` "${code}", I_${code}, T_${code}`
+                    out += ` "${code}", I_${code}, T_${code}, G_${code}`
                     out += ' },\n'
                 })
 
