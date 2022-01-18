@@ -41,6 +41,7 @@ struct IC {
   String code;
   int *image;
   int *table;
+  int *gates;
 };
 
 // ic list struct definition

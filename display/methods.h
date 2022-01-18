@@ -21,6 +21,7 @@ void displayText(String line_1, String line_2 = "") {
         // print each char
         setSymbol(TEXT_SYMBOLS, TEXT_SYMBOLS_LENGTH, text[i], x, y);
     }
+    delay(50);
 }
 
 // write symbols on display
@@ -41,6 +42,7 @@ void displaySymb(String text) {
             setSymbol(GATE_SYMBOLS, GATE_SYMBOLS_LENGTH, text[i], x, y);
         }
     }
+    delay(50);
 }
 
 void displayOuts(String marks) {
@@ -73,11 +75,6 @@ void displayOuts(String marks) {
     // make space
     for(int i = 0; i < 32; i++) { if(image_2[i] == '#') { image_2[i] = '0'; } }
 
-    Serial.print("PRINT.GATE_MAPS ");
-    Serial.print(image_1);
-    Serial.print(" ");
-    Serial.println(image_2);
-
     image_1[16] = '*';
     image_2[16] = '*';
 
@@ -86,29 +83,84 @@ void displayOuts(String marks) {
         "                "
     );
 
-    // image blink animation
+    displayBackMenu(image_1, image_2, marks, 1);
+}
+
+void displayPins(String marks) {
+    String image_1 = "0000000GTTTTTTTH0000000IBBBBBBBJ";
+    String image_2 = "0FULLY0GTTTTTTTH0WORKS0IBBBBBBBJ";
+
+    String pins = getPinsRow();
+
+    int ok = 1;
+    for(int i = 0; i < strlen(marks); i++) {
+        if(marks[i] == '0') { ok = 0; }
+    }
+
+    if(ok == 0) {
+        image_2[1] = 'F';
+        image_2[2] = 'O';
+        image_2[3] = 'U';
+        image_2[4] = 'N';
+        image_2[5] = 'D';
+
+        image_2[17] = 'E';
+        image_2[18] = 'R';
+        image_2[19] = 'R';
+        image_2[20] = 'O';
+        image_2[21] = 'R';
+        image_2[22] = 'S';
+    }
+
+    for(int i = 0; i < 12; i++) {
+        int m = pins[i] - 50;
+        if(i < 6) {
+            // bottom line
+            char c = m == -1 ? 'B' : marks[m] == '1' ? 'B' : 'Z';
+            image_2[i + 24] = c;
+        } else {
+            // top line
+            char c = m == -1 ? 'T' : marks[m] == '1' ? 'T' : 'X';
+            image_2[14 - (i - 6)] = c;
+        }
+    }
+
+    displayBackMenu(image_2, image_1, marks, 2);
+}
+
+void displayBackMenu(String image_1, String image_2, String marks, int page) {
+    // display final result
     int back = 0;
     while(back == 0) {
-        displaySymb(image_1);
-        for(int i = 0; i < 200; i += 20) {
-            if(analogCheck(3)) {
-                Serial.println("INPUT.SCAN_ENDS");
-                displayMenu(); back = 1; i = 200; return;
-            }
-            if(analogCheck(2)) {
-                Serial.println("INPUT.SCAN_BACK");
-                logicalTest(true); back = 1; i = 200; return;
-            }
-        }
-        displaySymb(image_2);
-        for(int i = 0; i < 200; i += 20) {
-            if(analogCheck(3)) {
-                Serial.println("INPUT.SCAN_ENDS");
-                displayMenu(); back = 1; i = 200; return;
-            }
-            if(analogCheck(2)) {
-                Serial.println("INPUT.SCAN_BACK");
-                logicalTest(true); back = 1; i = 200; return;
+        for(int i = 0; i < 2; i++) {
+            // animate images
+            if(i == 0) {
+                displaySymb(image_1);
+            } else { displaySymb(image_2); }
+            delay(50);
+            // inspect user inputs
+            for(int i = 0; i < 200; i += 20) {
+                if(page == 2 && analogCheck(0)) {
+                    // display pins
+                    delay(50);
+                    displayOuts(marks); back = 1; i = 200; return;
+                }
+                if(page == 1 && analogCheck(1)) {
+                    // display outs
+                    delay(50);
+                    displayPins(marks); back = 1; i = 200; return;
+                }
+                if(analogCheck(3)) {
+                    // back to menu
+                    delay(50);
+                    Serial.println("INPUT.SCAN_ENDS");
+                    displayMenu(); back = 1; i = 200; return;
+                }
+                if(analogCheck(2)) {
+                    // rescan
+                    delay(50);
+                    logicalTest(true); back = 1; i = 200; return;
+                }
             }
         }
     }

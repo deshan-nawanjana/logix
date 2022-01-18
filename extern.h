@@ -23,9 +23,12 @@ extern void displayInit();
 extern void displayText(String line_1, String line_2);
 extern void displaySymb(String arr);
 extern void displayOuts(String marks);
+extern void displayPins(String marks);
+extern void displayBackMenu(String image_1, String image_2, String marks, int page);
 
 // logical modules
 extern String toLogicRow(int x);
+extern String getPinsRow();
 
 // logical methods
 extern void logicalTest(bool fast);

@@ -110,6 +110,6 @@ void logicalTest(bool fast) {
         // turn off ic supply
         digitalWrite(IC_PIN_3V, LOW);
         // display result
-        displayOuts(out_marks);
+        displayPins(out_marks);
     } else { logicalTest(false); }
 }

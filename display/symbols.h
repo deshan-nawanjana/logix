@@ -1,5 +1,5 @@
 #define TEXT_SYMBOLS_LENGTH 10
-#define GATE_SYMBOLS_LENGTH 8
+#define GATE_SYMBOLS_LENGTH 16
 
 byte LOGIC_AND[] = {
   B11100,
@@ -87,6 +87,94 @@ byte LOGIC_DOT[] = {
   B10010,
   B10010,
   B01100
+};
+
+byte LOGIC_IC_TL[] = {
+	B00000,
+	B00000,
+	B00000,
+	B00001,
+	B00001,
+	B00001,
+	B00001,
+	B00001
+};
+
+byte LOGIC_IC_TR[] = {
+	B00000,
+	B00000,
+	B00000,
+	B10000,
+	B10000,
+	B10000,
+	B10000,
+	B10000
+};
+
+byte LOGIC_IC_BL[] = {
+	B00001,
+	B00001,
+	B00001,
+	B00001,
+	B00001,
+	B00000,
+	B00000,
+	B00000
+};
+
+byte LOGIC_IC_BR[] = {
+	B10000,
+	B10000,
+	B10000,
+	B10000,
+	B10000,
+	B00000,
+	B00000,
+	B00000
+};
+
+byte LOGIC_IC_T[] = {
+	B00100,
+	B00100,
+	B11111,
+	B00000,
+	B00000,
+	B00000,
+	B00000,
+	B00000
+};
+
+byte LOGIC_IC_TX[] = {
+	B00100,
+	B00100,
+	B11111,
+	B00000,
+	B01010,
+	B00100,
+	B01010,
+	B00000
+};
+
+byte LOGIC_IC_B[] = {
+	B00000,
+	B00000,
+	B00000,
+	B00000,
+	B00000,
+	B11111,
+	B00100,
+	B00100
+};
+
+byte LOGIC_IC_BX[] = {
+	B00000,
+	B01010,
+	B00100,
+	B01010,
+	B00000,
+	B11111,
+	B00100,
+	B00100
 };
 
 byte ARROW_LEFT[] = {
@@ -227,6 +315,15 @@ SYMB GATE_SYMBOLS[] = {
     { '8', LOGIC_NOT },
     { '9', LOGIC_XOR },
     { '*', LOGIC_DOT },
+
+    { 'G', LOGIC_IC_TL },
+    { 'H', LOGIC_IC_TR },
+    { 'I', LOGIC_IC_BL },
+    { 'J', LOGIC_IC_BR },
+    { 'T', LOGIC_IC_T },
+    { 'X', LOGIC_IC_TX },
+    { 'B', LOGIC_IC_B },
+    { 'Z', LOGIC_IC_BX }
 };
 
 int getSymbolIndexByCode(SYMB *sydb, int len, char code) {
