@@ -21,7 +21,6 @@ void displayText(String line_1, String line_2 = "") {
         // print each char
         setSymbol(TEXT_SYMBOLS, TEXT_SYMBOLS_LENGTH, text[i], x, y);
     }
-    delay(50);
 }
 
 // write symbols on display
@@ -42,7 +41,6 @@ void displaySymb(String text) {
             setSymbol(GATE_SYMBOLS, GATE_SYMBOLS_LENGTH, text[i], x, y);
         }
     }
-    delay(50);
 }
 
 void displayOuts(String marks) {
@@ -153,7 +151,6 @@ void displayBackMenu(String image_1, String image_2, String marks, int page) {
                 if(analogCheck(3)) {
                     // back to menu
                     delay(50);
-                    Serial.println("INPUT.SCAN_ENDS");
                     displayMenu(); back = 1; i = 200; return;
                 }
                 if(analogCheck(2)) {
