@@ -28,8 +28,20 @@ bool analogCheck(int n) {
 }
 
 void inputsCheck() {
-    if(analogCheck(0)) { lastIC(); }
-    if(analogCheck(1)) { nextIC(); }
+    if(analogCheck(0)) {
+        if(DATABASE[db_index].name == "AUTO") { db_index = 0; }
+        lastIC();
+    }
+    if(analogCheck(1)) {
+        if(DATABASE[db_index].name == "AUTO") { db_index = 0; }
+        nextIC();
+    }
     if(analogCheck(2)) { nextDB(); }
-    if(analogCheck(3)) { logicalTest(true); }
+    if(analogCheck(3)) {
+        if(DATABASE[db_index].name == "AUTO") {
+            logicalTestAll();
+        } else {
+            logicalTest(true);
+        }
+    }
 }
