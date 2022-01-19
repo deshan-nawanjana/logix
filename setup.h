@@ -28,13 +28,13 @@
 #define IC_PIN_13 13
 
 // analog  pins for user input button
-#define INPUT_PIN_LAST A15 // last ic code
-#define INPUT_PIN_NEXT A14 // next ic code
-#define INPUT_PIN_TYPE A13 // toggle ic series / rescan
-#define INPUT_PIN_SCAN A12 // scan / back
+#define INPUT_PIN_LAST A3 // last ic code
+#define INPUT_PIN_NEXT A2 // next ic code
+#define INPUT_PIN_TYPE A1 // toggle ic series / rescan
+#define INPUT_PIN_SCAN A0 // scan / back
 
 // delay time for each ic check step
-#define CHECK_DELAY 150
+#define CHECK_DELAY 100
 
 // ic struct definition
 struct IC {
