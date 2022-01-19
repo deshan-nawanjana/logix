@@ -11,6 +11,7 @@ String strcat(String str_1, String str_2) {
     char out[len_1 + len_2] = "";
     for(int i = 0; i < len_1; i++) { out[i] = str_1[i]; }
     for(int i = 0; i < len_2; i++) { out[i + len_1] = str_2[i]; }
+    out[len_1 + len_2] = '\0';
     return out;
 }
 
@@ -32,6 +33,7 @@ extern String getPinsRow();
 
 // logical methods
 extern void logicalTest(bool fast);
+extern void logicalTestAll();
 
 // inputs modules
 extern bool analogCheck(int n);
