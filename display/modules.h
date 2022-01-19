@@ -54,5 +54,4 @@ void updateRuns(String line, int crr, int tot) {
     }
     // display and delay
     displayText(text, wave);
-    delay(CHECK_DELAY);
 }
