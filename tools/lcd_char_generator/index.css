@@ -1,0 +1,22 @@
+#tray {
+    width: 245px;
+    height: 390px;
+    border: 1px solid #888;
+    float: left;
+}
+.dot {
+    width: 43px;
+    height: 43px;
+    float: left;
+    background-color: #AAA;
+    margin: 5px 0px 0px 5px;
+}
+.dot[lang="1"] { background-color: blue; }
+textarea {
+    width: 380px;
+    height: 380px;
+    margin: 0px 0px 0px 20px;
+    resize: none;
+    outline: none;
+    padding: 10px;
+}

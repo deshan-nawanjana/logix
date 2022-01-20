@@ -2,57 +2,8 @@
 <html>
     <head>
         <title>LCD Char Generator for LOGIX</title>
-        <style>
-            #tray {
-                width: 245px;
-                height: 390px;
-                border: 1px solid #888;
-                float: left;
-            }
-            .dot {
-                width: 43px;
-                height: 43px;
-                float: left;
-                background-color: #AAA;
-                margin: 5px 0px 0px 5px;
-            }
-            .dot[lang="1"] { background-color: blue; }
-            textarea {
-                width: 380px;
-                height: 380px;
-                margin: 0px 0px 0px 20px;
-                resize: none;
-                outline: none;
-                padding: 10px;
-            }
-        </style>
-        <script>
-            window.addEventListener('load', () => {
-                let tray = document.querySelector('#tray')
-                for(i = 0; i < 40; i++) {
-                    tray.innerHTML += `<div class="dot" onclick="update(event)"></div>`
-                }
-                generate()
-            })
-
-            let update = e => {
-                e = e.target
-                let k = e.hasAttribute('lang') ? parseInt(e.lang) : 0
-                e.lang = 1 - k
-                generate()
-            }
-
-            let generate = () => {
-                let x = `byte sample_char[] = {`
-                Array.from(document.querySelectorAll('.dot')).forEach((e, i) => {
-                    if(i % 5 == 0 && i != 0) { x += `,\n\tB` }
-                    if(i % 5 == 0 && i == 0) { x += `\n\tB` }
-                    x += e.lang == 1 ? '1' : '0'
-                })
-                x += `\n};\n\n`
-                document.querySelector('textarea').value = x
-            }
-        </script>
+        <link href="./index.css" rel="stylesheet">
+        <script src="./index.js"></script>
     </head>
     <div id="tray"></div>
     <textarea readonly></textarea>
