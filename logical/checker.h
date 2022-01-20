@@ -21,7 +21,7 @@ void logicalTest(bool fast) {
 
     if(!fast) {
         // send scanning ic info
-        Serial.print("INPUT.SCAN_RUNS ");
+        Serial.print("INPUT.SCAN_MANU ");
         Serial.print(db.name);
         Serial.print(" ");
         Serial.println(ic.code);
@@ -113,7 +113,7 @@ void logicalTest(bool fast) {
         }
         // send final score
         Serial.println(tot_mrk);
-        Serial.print("STATE.SCAN_OUTS ");
+        Serial.print("STATE.OUTS_MANU ");
         Serial.println(out_marks);
         // turn off ic supply
         digitalWrite(IC_PIN_3V, LOW);
@@ -223,10 +223,13 @@ void logicalTestAll() {
         String t = String(DATABASE[db_match].name);
         String c = String(DATABASE[db_match].list[ic_match].code);
 
-        Serial.print("STATE.AUTO_OUTS ");
+        Serial.print("STATE.OUTS_AUTO ");
         Serial.print(t);
         Serial.print(" ");
-        Serial.println(c);
+        Serial.print(c);
+        Serial.print(" ");
+        Serial.print(p);
+        Serial.println("%");
 
         String logo_1 = " ~!@ ";
         String line_1 = strlen(p) == 2
@@ -246,7 +249,7 @@ void logicalTestAll() {
             " ~!@  NO MATCH  ",
             " #$^  FOUND     "
         );
-        Serial.println("STATE.AUTO_OUTS NO_MATCH");
+        Serial.println("STATE.OUTS_AUTO NO_MATCH");
     }
 
     // turn off ic supply
