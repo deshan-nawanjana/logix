@@ -6,6 +6,7 @@ void buttonsInit() {
 }
 
 void displayHome() {
+    Serial.println(VERSION);
     Serial.println("STATE.HOME_TEXT");
     displayText(
         " ~!@    LOGIX   ",
