@@ -1,3 +1,6 @@
+// logix device version
+#define VERSION "LOGIX-1.0"
+
 // serial port baud rate
 #define BAUD_RATE 9600
 
