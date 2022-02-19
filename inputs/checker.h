@@ -29,11 +29,9 @@ bool analogCheck(int n) {
 
 void inputsCheck() {
     if(analogCheck(0)) {
-        if(DATABASE[db_index].name == "AUTO") { db_index = 0; }
         lastIC();
     }
     if(analogCheck(1)) {
-        if(DATABASE[db_index].name == "AUTO") { db_index = 0; }
         nextIC();
     }
     if(analogCheck(2)) { nextDB(); }

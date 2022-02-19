@@ -148,8 +148,18 @@ void logicalTestAll() {
 
     Serial.println("INPUT.SCAN_AUTO");
 
+    // get type of auto mode
+    int s; int e;
+    if(ic_index == 0) {
+        s = 0; e = 2; // full
+    } else if(ic_index == 1) {
+        s = 0; e = 1; // ttl
+    } else {
+        s = 1; e = 2; // cmos
+    }
+
     // each database
-    for(int d = 0; d < DATABASE_COUNT - 1; d++) {
+    for(int d = s; d < e; d++) {
         // current database
         DB db = DATABASE[d];
         // each ic
