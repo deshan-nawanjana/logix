@@ -1,12 +1,7 @@
-from ctypes import alignment
-from itertools import tee
-from msilib.schema import TextStyle
-from operator import iconcat
-from textwrap import fill
 from tkinter import *
 import tkinter
-from tkinter import font
-from turtle import left
+from PIL import Image, ImageTk
+from os.path import exists
 
 root = Tk()
 
@@ -15,7 +10,7 @@ root.resizable = False
 root.iconbitmap("icon.ico")
 root.title('LOGIX IC Tester')
 
-tray = PanedWindow(root, bg = '#AAA')
+tray = PanedWindow(root, bg = '#FFF')
 tray.pack(fill = BOTH, expand = 1)
 
 cons = Label(
@@ -49,8 +44,7 @@ def load(line) :
     loadConsole(line)
     # split for code and info
     line.split(" ", 1)
-    code = line[0]
-    info = line[1]
+    selectUIState(line)
     return
 
 def loadConsole(line) :
@@ -80,12 +74,59 @@ def clearTray() :
 
 def loadWaiting() :
     global tray
+    clearTray()
     wait = Label(
         tray,
         bg = '#AAA',
         foreground = '#444',
         text = 'Waiting for connection...',
-        font = "Consolas 18 bold",
-        
+        font = "Consolas 18 bold"
     )
-    wait.pack(fill=BOTH, expand=1)
+    wait.pack(fill = BOTH, expand = 1)
+
+def selectUIState(line) :
+    print(line)
+    cmd = line[0:15]
+    dat = line[16:]
+    if(cmd == 'STATE.HOME_TEXT') : state_home_text()
+    if(cmd == 'STATE.MAIN_MENU' or cmd == 'INPUT.LAST_CODE' or cmd == 'INPUT.NEXT_CODE') :
+        state_main_menu(dat)
+
+def state_home_text() :
+    global tray
+    clearTray()
+    home = Label(
+        tray,
+        bg = '#AAA',
+        foreground = '#444',
+        text = 'LOGIX\nIC TESTER',
+        font = "Consolas 35 bold"
+    )
+    home.pack(fill = BOTH, expand = 1)
+
+def state_main_menu(dat) :
+    global tray
+    clearTray()
+    arr = dat.split(" ", 1)
+    home = Label(
+        tray,
+        bg = '#FFF',
+        foreground = '#444',
+        text = '\n< ' + dat + ' >',
+        font = "Consolas 22 bold",
+        height=2
+    )
+    home.pack()
+    file = "images/menu/"+ arr[1] +".gif"
+    if(exists(file) == False) : file = "images/menu/7400.gif"
+    snap = ImageTk.PhotoImage(
+        Image.open(file)
+    )
+    imag = Label(
+        tray,
+        height = 300,
+        width = 500,
+        image = snap
+    )
+    imag.image = snap
+    imag.pack()
