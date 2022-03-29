@@ -89,8 +89,9 @@ def selectUIState(line) :
     cmd = line[0:15]
     dat = line[16:]
     if(cmd == 'STATE.HOME_TEXT') : state_home_text()
-    if(cmd == 'STATE.MAIN_MENU' or cmd == 'INPUT.LAST_CODE' or cmd == 'INPUT.NEXT_CODE') :
+    if(cmd == 'STATE.MAIN_MENU' or cmd == 'INPUT.LAST_CODE' or cmd == 'INPUT.NEXT_CODE' or cmd == 'INPUT.NEXT_TYPE') :
         state_main_menu(dat)
+    if(cmd == 'STATE.SCAN_PINS' or cmd == 'INPUT.SCAN_AUTO') : state_scan_start(dat)
 
 def state_home_text() :
     global tray
@@ -118,15 +119,26 @@ def state_main_menu(dat) :
     )
     home.pack()
     file = "images/menu/"+ arr[1] +".gif"
-    if(exists(file) == False) : file = "images/menu/7400.gif"
     snap = ImageTk.PhotoImage(
         Image.open(file)
     )
     imag = Label(
         tray,
-        height = 300,
+        height = 350,
         width = 500,
         image = snap
     )
     imag.image = snap
     imag.pack()
+
+def state_scan_start(dat) :
+    global tray
+    clearTray()
+    wait = Label(
+        tray,
+        bg = '#AAA',
+        foreground = '#444',
+        text = 'Scanning...',
+        font = "Consolas 18 bold"
+    )
+    wait.pack(fill = BOTH, expand = 1)
